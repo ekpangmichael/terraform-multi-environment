@@ -1,50 +1,41 @@
+# Terraform configuration
+
 provider "aws" {
-  region = var.region
+  region = "us-west-2"
 }
 
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "2.33.0"
 
-resource "random_pet" "petname" {
-  length    = 2
-  separator = "-"
+  name = var.vpc_name
+  cidr = var.vpc_cidr
+
+  azs             = var.vpc_azs
+  private_subnets = var.vpc_private_subnets
+  public_subnets  = var.vpc_public_subnets
+
+  enable_nat_gateway = var.vpc_enable_nat_gateway
+
+  tags = var.vpc_tags
 }
 
-resource "aws_s3_bucket" "dev" {
-  bucket = "${var.dev_prefix}-${random_pet.petname.id}"
-  acl    = "public-read"
+module "ec2_instances" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "2.12.0"
 
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadGetObject",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": [
-                "s3:GetObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::${var.dev_prefix}-${random_pet.petname.id}/*"
-            ]
-        }
-    ]
-}
-EOF
+  name           = "my-ec2-cluster"
+  instance_count = 2
 
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
+  ami                    = "ami-0c5204531f799e0c6"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [module.vpc.default_security_group_id]
+  subnet_id              = module.vpc.public_subnets[0]
 
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
   }
-  force_destroy = true
 }
 
-resource "aws_s3_bucket_object" "dev" {
-  acl          = "public-read"
-  key          = "index.html"
-  bucket       = aws_s3_bucket.dev.id
-  content      = file("${path.module}/../assets/index.html")
-  content_type = "text/html"
-
-}
 
