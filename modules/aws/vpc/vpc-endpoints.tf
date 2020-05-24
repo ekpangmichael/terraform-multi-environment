@@ -982,7 +982,7 @@ resource "aws_vpc_endpoint" "rekognition" {
 }
 
 #######################
-# VPC Endpoint for EFS
+# VPC Endpoint for EFS 
 #######################
 data "aws_vpc_endpoint_service" "efs" {
   count = var.create_vpc && var.enable_efs_endpoint ? 1 : 0
