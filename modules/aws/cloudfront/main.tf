@@ -1,8 +1,5 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
-  origin {
-    domain_name,
-    origin_id   = "${local.s3_origin_id}"
-  }
+  var.origin
 
   enabled             = true
   is_ipv6_enabled     = true

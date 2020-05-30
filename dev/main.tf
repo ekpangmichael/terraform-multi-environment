@@ -35,8 +35,10 @@ module "acm" {
 # CLOUDFRONT
 module "cloudfront" {
   source = "../modules/aws/cloudfront/"
-  domain_name = module.s3.b.bucket_regional_domain_name
-}
+  origin = {
+    domain_name =module.s3.b.bucket_regional_domain_name
+    origin_id   = "${local.s3_origin_id}"
+  }
 
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
