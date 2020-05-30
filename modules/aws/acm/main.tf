@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.domain
+  domain_name       = var.domain_name
   validation_method = "DNS"
 
   tags = {
@@ -12,7 +12,7 @@ resource "aws_acm_certificate" "cert" {
 }
 
 data "aws_route53_zone" "zone" {
-  name         = "${var.domain}."
+  name         = "${var.domain_name}."
   private_zone = false
 }
 

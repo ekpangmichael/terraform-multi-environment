@@ -58,7 +58,7 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "domain" {
+variable "domain_name" {
   description = "domain name for acm"
   type        = string
 }
