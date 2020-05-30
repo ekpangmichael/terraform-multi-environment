@@ -32,6 +32,11 @@ module "acm" {
   domain_name = var.domain_name
 }
 
+# CLOUDFRONT
+module "acm" {
+  source = "../modules/aws/cloudfront/"
+  domain_name = module.s3.b.bucket_regional_domain_name
+}
 
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
