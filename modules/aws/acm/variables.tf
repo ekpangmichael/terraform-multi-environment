@@ -1,4 +1,4 @@
-variable "domain_name" {
+variable "domain" {
   description = "domain name"
   type        = string
   default     = ""
