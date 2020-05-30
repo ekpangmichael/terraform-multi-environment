@@ -1,9 +1,10 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.domain_name
+  domain_name       = "*.${var.domain_name}"
   validation_method = "DNS"
 
   tags = {
     Environment = "test"
+    Name = "infra.tk-ssl"
   }
 
   lifecycle {
