@@ -1,9 +1,10 @@
 # Terraform configuration
 
 provider "aws" {
-  region = "us-west-2"
+  region = var.region
 }
 
+# VPC MODULE
 module "vpc" {
   source  = "../modules/aws/vpc/"
 
@@ -18,6 +19,13 @@ module "vpc" {
 
   tags = var.vpc_tags
 }
+
+# S3 MODULE
+module "s3" {
+  source = "../modules/aws/s3/"
+  bucket_name = var.bucket_name
+}
+
 
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"

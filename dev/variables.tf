@@ -1,9 +1,14 @@
-# Input variable definitions
+# VPC VARIABLES
 
 variable "vpc_name" {
   description = "Name of VPC"
   type        = string
   default     = "example-vpc"
+}
+
+variable "region" {
+  description = "Name of region"
+  type        = string
 }
 
 variable "vpc_cidr" {
@@ -43,4 +48,12 @@ variable "vpc_tags" {
     Terraform   = "true"
     Environment = "dev"
   }
+}
+
+
+# S3 BUCKET VARIABLES
+
+variable "bucket_name" {
+  description = "S3 bucket name"
+  type        = string
 }
