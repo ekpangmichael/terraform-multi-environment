@@ -33,7 +33,7 @@ module "acm" {
 }
 
 # CLOUDFRONT
-module "acm" {
+module "cloudfront" {
   source = "../modules/aws/cloudfront/"
   domain_name = module.s3.b.bucket_regional_domain_name
 }
