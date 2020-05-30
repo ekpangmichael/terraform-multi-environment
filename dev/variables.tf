@@ -63,3 +63,8 @@ variable "domain_name" {
   type        = string
 }
 
+variable "name" {
+  description = "domain name for acm"
+  type        = string
+}
+
