@@ -30,7 +30,7 @@ module "s3" {
 module "acm" {
   source = "../modules/aws/acm/"
   domain_name = var.domain_namee
-  name = var.name
+  name = var.domain_name
 }
 
 
