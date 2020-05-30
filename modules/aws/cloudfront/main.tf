@@ -1,5 +1,5 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
-  var.origin
+  var.origin,
 
   enabled             = true
   is_ipv6_enabled     = true

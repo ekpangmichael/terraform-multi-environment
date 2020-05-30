@@ -36,7 +36,7 @@ module "acm" {
 module "cloudfront" {
   source = "../modules/aws/cloudfront/"
   origin = {
-    domain_name =module.s3.b.bucket_regional_domain_name
+    domain_name = module.s3.b.bucket_regional_domain_name
     origin_id   = "${local.s3_origin_id}"
   }
 
