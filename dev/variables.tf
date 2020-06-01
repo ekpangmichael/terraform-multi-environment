@@ -60,10 +60,11 @@ variable "bucket_name" {
   default = "dev-infra"
 }
 
-# variable "domain_name" {
-#   description = "domain name for acm"
-#   type        = string
-# }
+variable "domain_name" {
+  description = "domain name for acm"
+  type        = string
+   default = "infra.tk"
+}
 
 # variable "name" {
 #   description = "domain name for acm"

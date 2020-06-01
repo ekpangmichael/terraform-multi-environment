@@ -32,7 +32,12 @@ module "s3" {
 #   domain_name = var.domain_name
 # }
 
-
+# cloudfrint
+# module "cloudfront" {
+#   source = "../modules/aws/cloudfront/"
+#   regional_domain_name = module.s3.aws_s3_bucket.b.bucket_regional_domain_name
+#   bucket_name = var.bucket_name
+# }
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
 #   version = "2.12.0"
