@@ -32,13 +32,13 @@ module "acm" {
   domain_name = var.domain_name
 }
 
-cloudfrint
-module "cloudfront" {
-  source = "../modules/aws/cloudfront/"
-  regional_domain_name = module.s3.bucket_regional_domain_name
-  bucket_name = var.bucket_name
-  aws_acm_certificate_arn = module.acm.aws_acm_certificate_arn
-}
+# cloudfrint
+# module "cloudfront" {
+#   source = "../modules/aws/cloudfront/"
+#   regional_domain_name = module.s3.bucket_regional_domain_name
+#   bucket_name = var.bucket_name
+#   aws_acm_certificate_arn = module.acm.aws_acm_certificate_arn
+# }
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
 #   version = "2.12.0"
