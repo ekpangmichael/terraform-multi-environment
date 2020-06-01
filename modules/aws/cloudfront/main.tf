@@ -53,10 +53,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
  // depends_on = [aws_acm_certificate_validation.cert]
 }
-data "aws_route53_zone" "zone" {
-  name         = "${var.domain_name}."
-  private_zone = false
-}
+# data "aws_route53_zone" "zone" {
+#   name         = "${var.domain_name}."
+#   private_zone = false
+# }
 
 resource "aws_route53_record" "www" {
   zone_id = "${data.aws_route53_zone.zone.id}"
