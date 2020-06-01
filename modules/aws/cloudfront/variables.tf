@@ -14,3 +14,9 @@ variable "domain_name" {
   type        = string
   default     = ""
 }
+
+variable "aws_acm_certificate_arn" {
+  description = "aws_acm_certificate_arn"
+  type        = string
+  default     = ""
+}

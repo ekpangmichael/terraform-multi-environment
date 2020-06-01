@@ -33,8 +33,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
         forward = "none"
       }
     }
-
-    viewer_protocol_policy = "allow-all"
+  viewer_protocol_policy = "allow-all"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -52,8 +51,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     ssl_support_method = "sni-only"
   }
 
-
-  depends_on = [aws_acm_certificate_validation.cert]
+ // depends_on = [aws_acm_certificate_validation.cert]
 }
 data "aws_route53_zone" "zone" {
   name         = "${var.domain_name}."
