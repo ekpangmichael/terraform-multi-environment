@@ -60,10 +60,10 @@ resource "aws_acm_certificate" "cert" {
   }
 }
 
-data "aws_route53_zone" "zone" {
-  name         = "${var.domain}"
-  private_zone = false
-}
+# data "aws_route53_zone" "zone" {
+#   name         = "${var.domain}"
+#   private_zone = false
+# }
 
 resource "aws_route53_record" "cert_validation" {
   name    = "${aws_acm_certificate.cert.domain_validation_options.0.resource_record_name}"
