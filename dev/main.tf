@@ -19,7 +19,7 @@ provider "aws" {
 
 #   tags = var.vpc_tags
 # }
-
+ http://dev-infra.s3-website-eu-west-1.amazonaws.com
 #S3 MODULE
 module "s3" {
   source = "../modules/aws/s3/"
