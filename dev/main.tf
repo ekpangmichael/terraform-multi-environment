@@ -21,25 +21,25 @@ provider "aws" {
 # }
 
 #S3 MODULE
-module "s3" {
-  source = "../modules/aws/s3/"
-  bucket_name = var.bucket_name
-}
-
-# ACM
-# module "acm" {
-#   source = "../modules/aws/acm/"
-#   domain_name = var.domain_name
+# module "s3" {
+#   source = "../modules/aws/s3/"
+#   bucket_name = var.bucket_name
 # }
 
-#cloudfront
-module "cloudfront" {
-  source = "../modules/aws/cloudfront/"
-  regional_domain_name = module.s3.bucket_regional_domain_name
-  bucket_name = var.bucket_name
+# ACM
+module "acm" {
+  source = "../modules/aws/acm/"
   domain_name = var.domain_name
-  aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/f0356506-2264-4213-b5b7-99ea612253f1"
 }
+
+#cloudfront
+# module "cloudfront" {
+#   source = "../modules/aws/cloudfront/"
+#   regional_domain_name = module.s3.bucket_regional_domain_name
+#   bucket_name = var.bucket_name
+#   domain_name = var.domain_name
+#   aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/f0356506-2264-4213-b5b7-99ea612253f1"
+# }
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
 #   version = "2.12.0"
