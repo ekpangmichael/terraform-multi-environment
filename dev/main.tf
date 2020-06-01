@@ -26,11 +26,11 @@ module "s3" {
   bucket_name = var.bucket_name
 }
 
-# ACM
-module "acm" {
-  source = "../modules/aws/acm/"
-  domain_name = var.domain_name
-}
+# # ACM
+# module "acm" {
+#   source = "../modules/aws/acm/"
+#   domain_name = var.domain_name
+# }
 
 
 # module "ec2_instances" {

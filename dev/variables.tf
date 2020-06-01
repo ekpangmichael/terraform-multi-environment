@@ -9,6 +9,7 @@
 variable "region" {
   description = "Name of region"
   type        = string
+  default = "eu-west-1"
 }
 
 # variable "vpc_cidr" {
@@ -56,15 +57,16 @@ variable "region" {
 variable "bucket_name" {
   description = "S3 bucket name"
   type        = string
+  default = "dev-infra"
 }
 
-variable "domain_name" {
-  description = "domain name for acm"
-  type        = string
-}
+# variable "domain_name" {
+#   description = "domain name for acm"
+#   type        = string
+# }
 
-variable "name" {
-  description = "domain name for acm"
-  type        = string
-}
+# variable "name" {
+#   description = "domain name for acm"
+#   type        = string
+# }
 
