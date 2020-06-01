@@ -21,7 +21,7 @@ provider "aws" {
 # }
 
 # S3 MODULE
-module "s3" {
+module "s3_bucket" {
   source = "../modules/aws/s3/"
   bucket_name = var.bucket_name
 }
