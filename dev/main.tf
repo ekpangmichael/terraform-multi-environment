@@ -37,6 +37,7 @@ module "cloudfront" {
   source = "../modules/aws/cloudfront/"
   regional_domain_name = module.s3.bucket_regional_domain_name
   bucket_name = var.bucket_name
+  domain_name = var.domain_name
   aws_acm_certificate_arn = module.acm.aws_acm_certificate_arn
 }
 # module "ec2_instances" {
