@@ -43,19 +43,14 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     max_ttl                = 86400
   }
 
-  restrictions {
-    geo_restriction {
-      restriction_type = "whitelist"
-      locations        = ["US", "CA", "GB", "DE"]
-    }
-  }
+
 
   viewer_certificate {
     acm_certificate_arn = "${var.aws_acm_certificate_arn}"
     ssl_support_method = "sni-only"
   }
 
- // depends_on = [aws_acm_certificate_validation.cert]
+
 }
 
 resource "aws_route53_record" "www" {
