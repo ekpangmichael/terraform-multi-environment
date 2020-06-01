@@ -10,7 +10,6 @@
 #   value       = module.ec2_instances.public_ip
 # }
 
-
 output "website_bucket_arn" {
   description = "ARN of the bucket"
   value       = module.s3.arn
@@ -18,7 +17,7 @@ output "website_bucket_arn" {
 
 output "website_bucket_name" {
   description = "Name (id) of the bucket"
-  value       = module.s3.name
+  value       = module.s3.id
 }
 
 output "website_endpoint" {
