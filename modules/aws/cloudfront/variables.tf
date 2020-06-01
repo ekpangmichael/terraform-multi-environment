@@ -8,3 +8,9 @@ variable "bucket_name" {
   type        = string
   default     = ""
 }
+
+variable "domain_name" {
+  description = "domain_name"
+  type        = string
+  default     = ""
+}

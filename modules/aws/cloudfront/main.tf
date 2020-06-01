@@ -1,3 +1,7 @@
+locals {
+  s3_origin_id = "myS3Origin"
+}
+
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = var.regional_domain_name
@@ -44,17 +48,21 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate.cert.arn}"
+    acm_certificate_arn = "${var.aws_acm_certificate_arn}"
     ssl_support_method = "sni-only"
   }
 
 
-  depends_on = [aws_acm_certificate_validation.cert]
+ // depends_on = [aws_acm_certificate_validation.cert]
+}
+data "aws_route53_zone" "zone" {
+  name         = "${var.domain_name}."
+  private_zone = false
 }
 
 resource "aws_route53_record" "www" {
   zone_id = "${data.aws_route53_zone.zone.id}"
-  name    = "${var.domain}"
+  name    = "${var.domain_name}"
   type    = "A"
 
   alias {
