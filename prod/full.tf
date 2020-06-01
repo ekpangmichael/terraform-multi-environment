@@ -33,13 +33,7 @@ EOF
   }
 }
 
-resource "null_resource" "build" {
-  provisioner "local-exec" {
-    command = "cd my-app && npm i && npm run build"
-  }
-  
-  depends_on = [aws_s3_bucket.b]
-}
+
 
 resource "null_resource" "deploy" {
   provisioner "local-exec" {
