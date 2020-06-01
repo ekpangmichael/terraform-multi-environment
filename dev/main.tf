@@ -32,7 +32,7 @@ module "acm" {
   domain_name = var.domain_name
 }
 
-cloudfrint
+#cloudfront
 module "cloudfront" {
   source = "../modules/aws/cloudfront/"
   regional_domain_name = module.s3.bucket_regional_domain_name
