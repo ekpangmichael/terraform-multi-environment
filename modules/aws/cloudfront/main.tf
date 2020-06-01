@@ -53,7 +53,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
 
- // depends_on = [aws_acm_certificate_validation.cert]
+  depends_on = [aws_acm_certificate_validation.cert]
 }
 data "aws_route53_zone" "zone" {
   name         = "${var.domain_name}."
