@@ -21,10 +21,10 @@ provider "aws" {
 # }
 
 # S3 MODULE
-module "s3" {
-  source = "../modules/aws/s3/"
-  bucket_name = var.bucket_name
-}
+# module "s3" {
+#   source = "../modules/aws/s3/"
+#   bucket_name = var.bucket_name
+# }
 
 # ACM
 module "acm" {
@@ -33,13 +33,13 @@ module "acm" {
 }
 
 #cloudfront
-module "cloudfront" {
-  source = "../modules/aws/cloudfront/"
-  regional_domain_name = module.s3.bucket_regional_domain_name
-  bucket_name = var.bucket_name
-  domain_name = var.domain_name
-  aws_acm_certificate_arn = module.acm.aws_acm_certificate_arn
-}
+# module "cloudfront" {
+#   source = "../modules/aws/cloudfront/"
+#   regional_domain_name = module.s3.bucket_regional_domain_name
+#   bucket_name = var.bucket_name
+#   domain_name = var.domain_name
+#   aws_acm_certificate_arn = module.acm.aws_acm_certificate_arn
+# }
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
 #   version = "2.12.0"
