@@ -20,7 +20,7 @@ provider "aws" {
 #   tags = var.vpc_tags
 # }
 
-S3 MODULE
+#S3 MODULE
 module "s3" {
   source = "../modules/aws/s3/"
   bucket_name = var.bucket_name
@@ -32,7 +32,7 @@ module "s3" {
 #   domain_name = var.domain_name
 # }
 
-cloudfront
+#cloudfront
 module "cloudfront" {
   source = "../modules/aws/cloudfront/"
   regional_domain_name = module.s3.bucket_regional_domain_name
