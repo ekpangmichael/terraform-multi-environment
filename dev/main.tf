@@ -38,7 +38,7 @@ module "cloudfront" {
   regional_domain_name = module.s3.bucket_regional_domain_name
   bucket_name = var.bucket_name
   domain_name = var.domain_name
-  aws_acm_certificate_arn = arn:aws:acm:us-east-1:387883916874:certificate/f0356506-2264-4213-b5b7-99ea612253f1
+  aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/f0356506-2264-4213-b5b7-99ea612253f1"
 }
 # module "ec2_instances" {
 #   source  = "terraform-aws-modules/ec2-instance/aws"
