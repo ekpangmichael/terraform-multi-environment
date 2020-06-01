@@ -2,7 +2,7 @@ locals {
   s3_origin_id = "myS3Origin"
 }
 data "aws_route53_zone" "zone" {
-  name         = "${var.domain_name}."
+  name         = "${var.base_domain_name}."
   private_zone = false
 }
 

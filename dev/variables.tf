@@ -63,6 +63,11 @@ variable "bucket_name" {
 variable "domain_name" {
   description = "domain name for acm"
   type        = string
+}
+
+variable "base_domain_name" {
+  description = "domain name for acm"
+  type        = string
    default = "infra.tk"
 }
 

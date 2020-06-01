@@ -15,6 +15,12 @@ variable "domain_name" {
   default     = ""
 }
 
+variable "base_domain_name" {
+  description = "domain_name"
+  type        = string
+  default     = ""
+}
+
 variable "aws_acm_certificate_arn" {
   description = "aws_acm_certificate_arn"
   type        = string
