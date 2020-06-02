@@ -22,5 +22,5 @@ output "bucket_regional_domain_name" {
 
 output "superadmin_bucket_regional_domain_name" {
   description = "Domain name of the bucket"
-  value       = aws_s3_bucket.b.superadmin_bucket_regional_domain_name
+  value       = aws_s3_bucket.b.bucket_regional_domain_name
 }
