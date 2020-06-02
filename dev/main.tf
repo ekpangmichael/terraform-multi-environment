@@ -26,7 +26,7 @@ module "s3" {
   bucket_name = var.bucket_name
 }
 
-module "s3" {
+module "s3_superadmin" {
   source = "../modules/aws/s3/"
   bucket_name = "superadmin-dev-infra"
 }
@@ -46,9 +46,9 @@ module "cloudfront" {
   aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/1304a2ac-d98d-4e00-92fb-07668533d0bc"
 }
 
-module "cloudfront" {
+module "cloudfront_superadmin" {
   source = "../modules/aws/cloudfront/"
-  regional_domain_name = module.s3.bucket_regional_domain_name
+  regional_domain_name = module.s3_superadmin.superadmin_bucket_regional_domain_name
   bucket_name = "superadmin-dev-infra"
   domain_name = "superadmin-dev.infra.tk"
   base_domain_name = var.base_domain_name
