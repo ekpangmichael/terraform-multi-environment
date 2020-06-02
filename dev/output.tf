@@ -32,8 +32,7 @@ output "bucket_regional_domain_name" {
 
 output "superadmin_bucket_regional_domain_name" {
   description = "bucket regional domain name"
-  value       = module.s3_superadmin.bucket_regional_domain_name
-}
+  value       = module.s3_superadmin.superadmin_bucket_regional_domain_name
 
 
 # output "aws_acm_certificate_arn" {
