@@ -21,7 +21,7 @@ variable "vpc_cidr" {
 variable "vpc_azs" {
   description = "Availability zones for VPC"
   type        = list
-  default     = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  default     = ["us-west-2a", "us-west-2b"]
 }
 
 variable "vpc_private_subnets" {
@@ -42,14 +42,14 @@ variable "vpc_enable_nat_gateway" {
   default = true
 }
 
-# variable "vpc_tags" {
-#   description = "Tags to apply to resources created by VPC module"
-#   type        = map(string)
-#   default     = {
-#     Terraform   = "true"
-#     Environment = "dev"
-#   }
-# }
+variable "vpc_tags" {
+  description = "Tags to apply to resources created by VPC module"
+  type        = map(string)
+  default     = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
 
 
 # S3 BUCKET VARIABLES
