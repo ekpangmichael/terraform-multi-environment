@@ -30,10 +30,10 @@ output "config_map_aws_auth" {
   value       = module.eks.config_map_aws_auth
 }
 
-output "region" {
-  description = "AWS region"
-  value       = var.region
-}
+# output "region" {
+#   description = "AWS region"
+#   value       = var.region
+# }
 
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
