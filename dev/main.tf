@@ -41,7 +41,6 @@ module "vpc" {
 #####################################
 #         cluster                   #
 #####################################
-
 module "eks" {
   source       = "terraform-aws-modules/eks/aws"
   version      = "12.0.0"
