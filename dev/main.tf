@@ -1,7 +1,7 @@
 # Terraform configuration
 
 provider "aws" {
-  region = "us-west-2"
+  region = var.region
 }
 locals {
   cluster_name = "tr1pp-dev-cluster"

@@ -6,11 +6,11 @@ variable "vpc_name" {
   default     = "example-vpc"
 }
 
-# variable "region" {
-#   description = "Name of region"
-#   type        = string
-#   default = "us-west-2"
-# }
+variable "region" {
+  description = "Name of region"
+  type        = string
+  default = "us-west-2"
+}
 
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
