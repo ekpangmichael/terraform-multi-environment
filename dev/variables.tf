@@ -21,7 +21,7 @@ variable "vpc_cidr" {
 variable "vpc_azs" {
   description = "Availability zones for VPC"
   type        = list
-  default     = ["us-west-2a", "us-west-2b"]
+  default     = ["us-west-2a", "us-west-2b", "us-west-2c"]
 }
 
 variable "vpc_private_subnets" {
@@ -54,22 +54,22 @@ variable "vpc_enable_nat_gateway" {
 
 # S3 BUCKET VARIABLES
 
-# variable "bucket_name" {
-#   description = "S3 bucket name"
-#   type        = string
-#   default = "dev-infra"
-# }
+variable "bucket_name" {
+  description = "S3 bucket name"
+  type        = string
+  default = "dev-infra"
+}
 
-# variable "domain_name" {
-#   description = "domain name for acm"
-#   type        = string
-# }
+variable "domain_name" {
+  description = "domain name for acm"
+  type        = string
+}
 
-# variable "base_domain_name" {
-#   description = "domain name for acm"
-#   type        = string
-#    default = "infra.tk"
-# }
+variable "base_domain_name" {
+  description = "domain name for acm"
+  type        = string
+   default = "infra.tk"
+}
 
 # variable "name" {
 #   description = "domain name for acm"
