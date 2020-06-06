@@ -20,21 +20,8 @@ module "vpc" {
 
   enable_nat_gateway = var.vpc_enable_nat_gateway
 
-  #tags = var.vpc_tags
+  tags = var.vpc_tags
 
-    tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-  }
-
-  public_subnet_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                      = "1"
-  }
-
-  private_subnet_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/internal-elb"             = "1"
-  }
 }
 
 
@@ -42,45 +29,45 @@ module "vpc" {
 #         cluster                   #
 #####################################
 
-module "eks" {
-  source       = "terraform-aws-modules/eks/aws"
-  version = "12.0.0"
-  cluster_name = local.cluster_name
-  subnets      = module.vpc.private_subnets
+# module "eks" {
+#   source       = "terraform-aws-modules/eks/aws"
+#   version = "12.0.0"
+#   cluster_name = local.cluster_name
+#   subnets      = module.vpc.private_subnets
 
-  tags = {
-    Environment = "training"
-    GithubRepo  = "terraform-aws-eks"
-    GithubOrg   = "terraform-aws-modules"
-  }
+#   tags = {
+#     Environment = "training"
+#     GithubRepo  = "terraform-aws-eks"
+#     GithubOrg   = "terraform-aws-modules"
+#   }
 
-  vpc_id = module.vpc.vpc_id
+#   vpc_id = module.vpc.vpc_id
 
-  worker_groups = [
-    {
-      name                          = "worker-group-1"
-      instance_type                 = "t2.small"
-      additional_userdata           = "echo foo bar"
-      asg_desired_capacity          = 2
-      additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
-    },
-    {
-      name                          = "worker-group-2"
-      instance_type                 = "t2.medium"
-      additional_userdata           = "echo foo bar"
-      additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
-      asg_desired_capacity          = 1
-    },
-  ]
-}
+#   worker_groups = [
+#     {
+#       name                          = "worker-group-1"
+#       instance_type                 = "t2.small"
+#       additional_userdata           = "echo foo bar"
+#       asg_desired_capacity          = 2
+#       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
+#     },
+#     {
+#       name                          = "worker-group-2"
+#       instance_type                 = "t2.medium"
+#       additional_userdata           = "echo foo bar"
+#       additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
+#       asg_desired_capacity          = 1
+#     },
+#   ]
+# }
 
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
-}
+# data "aws_eks_cluster" "cluster" {
+#   name = module.eks.cluster_id
+# }
 
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
-}
+# data "aws_eks_cluster_auth" "cluster" {
+#   name = module.eks.cluster_id
+# }
 
 # #S3 MODULE
 # module "s3" {
