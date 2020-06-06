@@ -9,7 +9,7 @@ variable "vpc_name" {
 variable "region" {
   description = "Name of region"
   type        = string
-  default = "us-west-2"
+  default = "eu-west-1"
 }
 
 variable "vpc_cidr" {
@@ -21,7 +21,7 @@ variable "vpc_cidr" {
 variable "vpc_azs" {
   description = "Availability zones for VPC"
   type        = list
-  default     = ["us-west-2a", "us-west-2b"]
+  default     = ["eu-west-1a", "eu-west-1b"]
 }
 
 variable "vpc_private_subnets" {
