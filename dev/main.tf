@@ -20,7 +20,7 @@ module "vpc" {
 
   enable_nat_gateway = var.vpc_enable_nat_gateway
 
-  # tags = var.vpc_tags
+  #tags = var.vpc_tags
 
     tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
@@ -44,7 +44,7 @@ module "vpc" {
 
 module "eks" {
   source       = "terraform-aws-modules/eks/aws"
-  version = "12.0.0"
+  version      = "12.0.0"
   cluster_name = local.cluster_name
   subnets      = module.vpc.private_subnets
 
