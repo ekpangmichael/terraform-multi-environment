@@ -1,0 +1,10 @@
+awsRegion: us-west-2
+
+rbac:
+  create: true
+  serviceAccountAnnotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::387883916874:role/cluster-autoscaler"
+
+autoDiscovery:
+  clusterName: tr1pp-dev-cluster
+  enabled: true
