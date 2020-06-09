@@ -1,9 +1,9 @@
 #Output variable definitions
 
-output "vpc_public_subnets" {
-  description = "IDs of the VPC's public subnets"
-  value       = module.vpc.public_subnets
-}
+# output "vpc_public_subnets" {
+#   description = "IDs of the VPC's public subnets"
+#   value       = module.vpc.public_subnets
+# }
 
 
 # ##############################
@@ -70,8 +70,8 @@ output "vpc_public_subnets" {
 #   value       = module.s3.bucket_regional_domain_name
 # }
 
-# output "superadmin_bucket_regional_domain_name" {
-#   description = "bucket regional domain name"
-#   value       = module.s3_superadmin.superadmin_bucket_regional_domain_name
+output "superadmin_bucket_regional_domain_name" {
+  description = "bucket regional domain name"
+  value       = module.s3_superadmin.superadmin_bucket_regional_domain_name
 
-# }
+}

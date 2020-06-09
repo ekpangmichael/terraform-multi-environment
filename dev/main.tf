@@ -3,44 +3,44 @@
 provider "aws" {
   region = var.region
 }
-locals {
-  cluster_name = "tr1pp-dev-cluster"
-}
+# locals {
+#   cluster_name = "tr1pp-dev-cluster"
+# }
 
-data "aws_caller_identity" "current" {}
+# data "aws_caller_identity" "current" {}
 
-####################################
-#            VPC                 #
-####################################
-module "vpc" {
-  source  = "../modules/aws/vpc/"
+# ####################################
+# #            VPC                 #
+# ####################################
+# module "vpc" {
+#   source  = "../modules/aws/vpc/"
 
-  name = var.vpc_name
-  cidr = var.vpc_cidr
+#   name = var.vpc_name
+#   cidr = var.vpc_cidr
 
-  azs             = var.vpc_azs
-  private_subnets = var.vpc_private_subnets
-  public_subnets  = var.vpc_public_subnets
+#   azs             = var.vpc_azs
+#   private_subnets = var.vpc_private_subnets
+#   public_subnets  = var.vpc_public_subnets
 
-  enable_nat_gateway = var.vpc_enable_nat_gateway
+#   enable_nat_gateway = var.vpc_enable_nat_gateway
   
 
-  #tags = var.vpc_tags
+#   #tags = var.vpc_tags
 
-    tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-  }
+#     tags = {
+#     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+#   }
 
-  public_subnet_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                      = "1"
-  }
+#   public_subnet_tags = {
+#     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+#     "kubernetes.io/role/elb"                      = "1"
+#   }
 
-  private_subnet_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/internal-elb"             = "1"
-  }
-}
+#   private_subnet_tags = {
+#     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+#     "kubernetes.io/role/internal-elb"             = "1"
+#   }
+# }
 
 
 # ####################################
@@ -104,10 +104,10 @@ module "vpc" {
 #   bucket_name = var.bucket_name
 # }
 
-# module "s3_superadmin" {
-#   source = "../modules/aws/s3/"
-#   bucket_name = "superadmin-dev-infra"
-# }
+module "s3_superadmin" {
+  source = "../modules/aws/s3/"
+  bucket_name = "superadmin-dev-infra"
+}
 
 # ######################
 # #     CLOUDFRONT    #
@@ -121,14 +121,15 @@ module "vpc" {
 #   aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/1304a2ac-d98d-4e00-92fb-07668533d0bc"
 # }
 
-# module "cloudfront_superadmin" {
-#   source = "../modules/aws/cloudfront/"
-#   regional_domain_name = module.s3_superadmin.superadmin_bucket_regional_domain_name
-#   bucket_name = "superadmin-dev-infra"
-#   domain_name = "superadmin-dev.infra.tk"
-#   base_domain_name = var.base_domain_name
-#   aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/1304a2ac-d98d-4e00-92fb-07668533d0bc"
-# }
+module "cloudfront_superadmin" {
+  source = "../modules/aws/cloudfront/"
+  regional_domain_name = module.s3_superadmin.superadmin_bucket_regional_domain_name
+  bucket_name = "superadmin-dev-infra"
+  domain_name = "superadmin-dev.infra.tk"
+  wwwdomain = "www.superadmin-dev.infra.tk"
+  base_domain_name = var.base_domain_name
+  aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/fa4d764d-69eb-4fef-bc70-b48113d3b403"
+}
 
 
 

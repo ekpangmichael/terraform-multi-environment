@@ -15,6 +15,12 @@ variable "domain_name" {
   default     = ""
 }
 
+variable "wwwdomain" {
+  description = "domain_name"
+  type        = string
+  default     = ""
+}
+
 variable "base_domain_name" {
   description = "domain_name"
   type        = string
