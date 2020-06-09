@@ -128,7 +128,7 @@ module "cloudfront_superadmin" {
   domain_name = "superadmin-dev.infra.tk"
   wwwdomain = "www.superadmin-dev.infra.tk"
   base_domain_name = var.base_domain_name
-  aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/fa4d764d-69eb-4fef-bc70-b48113d3b403"
+  aws_acm_certificate_arn = "arn:aws:acm:us-east-1:387883916874:certificate/e08c4b51-8d26-48cf-a9c2-c7bc2688a941"
 }
 
 
